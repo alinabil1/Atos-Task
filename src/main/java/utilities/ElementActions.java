@@ -26,7 +26,7 @@ public class ElementActions {
 
     public static void SetText(By element, String Text, WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(element));
+        wait.until(ExpectedConditions.presenceOfElementLocated(element));
         ClearText(element, driver);
         driver.findElement(element).sendKeys(Text);
     }
