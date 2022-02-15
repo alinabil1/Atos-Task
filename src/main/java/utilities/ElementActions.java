@@ -1,8 +1,6 @@
 package utilities;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -35,8 +33,17 @@ public class ElementActions {
         return driver.findElement(element).getText();
     }
 
-    public void ScrollToBottom() {
+    public static void ScrollToBottom(WebDriver driver) {
         ((JavascriptExecutor) driver).executeScript("window.scrollToBottom");
+    }
+    public static void ScrollIntoView(By element,WebDriver driver) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    public static void ClickKeyboardKey(WebDriver driver, By element, Keys key){
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated(element));
+        driver.findElement(element).sendKeys(key);
     }
 
 }

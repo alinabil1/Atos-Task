@@ -44,7 +44,7 @@ public class Test_base {
     @BeforeClass
     public static void connectToEmail() {
         try {
-            emailUtils = new EmailUtils("YOUR_USERNAME@gmail.com", "YOUR_PASSWORD", "smtp.gmail.com", EmailUtils.EmailFolder.INBOX);
+            emailUtils = new EmailUtils("alinabiltest@gmail.com", "Ya123456", "smtp.gmail.com", EmailUtils.EmailFolder.INBOX);
         } catch (Exception e) {
             e.printStackTrace();
             Assert.fail(e.getMessage());

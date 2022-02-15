@@ -1,9 +1,9 @@
 package phpMyTravels_pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import utilities.ElementActions;
-
 
 public class SignUp_page {
     private WebDriver driver;
@@ -18,8 +18,7 @@ public class SignUp_page {
     private By phone = By.name("phone");
     private By email = By.name("email");
     private By Password = By.name("password");
-    private By SignUpBTN = By.className("btn btn-default btn-lg btn-block effect ladda-button waves-effect");
-
+//    private By SignUpBTN = By.className(" btn btn-default btn-lg btn-block effect ladda-button waves-effect");
 
     // methods
     public void SetFirstName(String first_Name) {
@@ -42,10 +41,29 @@ public class SignUp_page {
         ElementActions.SetText(Password, password, driver);
     }
 
-    public Login_page ClickSignup() {
-        ElementActions.Click(SignUpBTN, driver);
-        return new Login_page(driver);
+//    public Login_page ClickSignup() {
+//        ElementActions.ScrollIntoView(SignUpBTN,driver);
+//        ElementActions.Click(SignUpBTN, driver);
+//        return new Login_page(driver);
+//    }
+
+
+    public void UserValidSignUp(String email,String password,String phone,String firstname,String lastname){
+        SetFirstName(firstname);
+        SetLastName(lastname);
+        SetEmail(email);
+        SetPhoneNumber(phone);
+        SetPassword(password);
+        ElementActions.ClickKeyboardKey(driver,Password,Keys.ENTER);
     }
 
+    public void InvalidUserSignUp(String email,String password,String phone,String firstname,String lastname){
+        SetFirstName(firstname);
+        SetLastName(lastname);
+        SetEmail(email);
+        SetPhoneNumber(phone);
+        SetPassword(password);
+        ElementActions.ClickKeyboardKey(driver,Password,Keys.ENTER);
+    }
 
 }
