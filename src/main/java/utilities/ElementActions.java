@@ -30,17 +30,20 @@ public class ElementActions {
     }
 
     public static String getText(By element, WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.presenceOfElementLocated(element));
         return driver.findElement(element).getText();
     }
 
     public static void ScrollToBottom(WebDriver driver) {
         ((JavascriptExecutor) driver).executeScript("window.scrollToBottom");
     }
-    public static void ScrollIntoView(By element,WebDriver driver) {
+
+    public static void ScrollIntoView(By element, WebDriver driver) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public static void ClickKeyboardKey(WebDriver driver, By element, Keys key){
+    public static void ClickKeyboardKey(WebDriver driver, By element, Keys key) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
         driver.findElement(element).sendKeys(key);

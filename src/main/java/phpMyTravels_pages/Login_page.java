@@ -25,10 +25,11 @@ public class Login_page {
         ElementActions.SetText(password, Password, driver);
     }
 
-    public void login_successfully(String email,String Password){
+    public UserAccount_Page login_successfully(String email,String Password){
         SetEmail(email);
         SetPassword(Password);
         ElementActions.ClickKeyboardKey(driver,password, Keys.ENTER);
+        return new UserAccount_Page(driver);
     }
 
 
