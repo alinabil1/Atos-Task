@@ -38,7 +38,8 @@ public class Test_base {
     }
 
 
-    //     Take screenshot when Test case fails
+
+/*    //     Take screenshot when Test case fails
     @AfterMethod
     public void screenshotOnFailure(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
@@ -52,5 +53,5 @@ public class Test_base {
             }
         }
     }
-
+*/
 }

@@ -19,7 +19,7 @@ public class Test_Register extends Test_base {
     Login_page loginObj;
     UserAccount_Page userAccountObj;
     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-    String No = String.valueOf(timestamp.getTime());
+    String ts = String.valueOf(timestamp.getTime());
     String firstname, lastname, phone, email, password;
 
 
@@ -41,11 +41,11 @@ public class Test_Register extends Test_base {
     }
 
     @Test()
-    public void testingValidUserSignUp() {
+    public void a_testingValidUserSignUp() {
         firstname = spreadSheet.getCellData("FirstName", 2);
         lastname = spreadSheet.getCellData("LastName", 2);
         phone = spreadSheet.getCellData("Mobile Number", 2);
-        email = spreadSheet.getCellData("Email", 2) + No + "@gmail.com";
+        email = spreadSheet.getCellData("Email", 2) + ts + "@gmail.com";
         password = spreadSheet.getCellData("Password", 2);
         homeObj = new Home_page(driver);
         homeObj.openSignUpPage();
@@ -71,12 +71,12 @@ public class Test_Register extends Test_base {
                 spreadSheet.getCellData("Expected Alert Message", 2));
     }
 
-    @Test(dependsOnMethods = "testingValidUserSignUp")
-    public void testingInvalidUserSignUp_emailAlreadyExists() throws InterruptedException {
+    @Test(dependsOnMethods = "a_testingValidUserSignUp")
+    public void b_testingInvalidUserSignUp_emailAlreadyExists() throws InterruptedException {
         firstname = spreadSheet.getCellData("FirstName", 3);
         lastname = spreadSheet.getCellData("LastName", 3);
         phone = spreadSheet.getCellData("Mobile Number", 3);
-        email = spreadSheet.getCellData("Email", 3) + No + "@gmail.com";
+        email = spreadSheet.getCellData("Email", 3) + ts + "@gmail.com";
         password = spreadSheet.getCellData("Password", 3);
         homeObj = new Home_page(driver);
         homeObj.openSignUpPage();
@@ -88,8 +88,8 @@ public class Test_Register extends Test_base {
                 "No/Wrong Alert Message!;");
     }
 
-    @Test
-    public void testingInvalidUserSignup_emailWrongFormat() {
+    @Test()
+    public void c_testingInvalidUserSignup_WrongEmailFormat() {
         firstname = spreadSheet.getCellData("FirstName", 4);
         lastname = spreadSheet.getCellData("LastName", 4);
         phone = spreadSheet.getCellData("Mobile Number", 4);
@@ -105,12 +105,12 @@ public class Test_Register extends Test_base {
     }
 
     @Test
-    public void testingInvalidUserSignup_invalidFirstNameFormat() {
-        String No = String.valueOf(timestamp.getTime());
+    public void d_testingInvalidUserSignup_invalidFirstNameFormat() {
+        String stamp = String.valueOf(timestamp.getTime());
         firstname = spreadSheet.getCellData("FirstName", 5);
         lastname = spreadSheet.getCellData("LastName", 5);
         phone = spreadSheet.getCellData("Mobile Number", 5);
-        email = spreadSheet.getCellData("Email", 5) + No + "@gmail.com";
+        email = spreadSheet.getCellData("Email", 5) + stamp + "@gmail.com";
         password = spreadSheet.getCellData("Password", 5);
         homeObj = new Home_page(driver);
         homeObj.openSignUpPage();
@@ -122,12 +122,12 @@ public class Test_Register extends Test_base {
     }
 
     @Test
-    public void testingInvalidUserSignup_invalidPasswordFormat() {
-        String No = String.valueOf(timestamp.getTime());
+    public void f_testingInvalidUserSignup_invalidPasswordFormat() {
+        String stamp = String.valueOf(timestamp.getTime());
         firstname = spreadSheet.getCellData("FirstName", 6);
         lastname = spreadSheet.getCellData("LastName", 6);
         phone = spreadSheet.getCellData("Mobile Number", 6);
-        email = spreadSheet.getCellData("Email", 6) + No + "@gmail.com";
+        email = spreadSheet.getCellData("Email", 6) + stamp + "@gmail.com";
         password = spreadSheet.getCellData("Password", 6);
         homeObj = new Home_page(driver);
         homeObj.openSignUpPage();
