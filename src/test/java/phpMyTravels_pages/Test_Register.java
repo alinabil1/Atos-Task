@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import utilities.EmailUtils;
 import utilities.ExcelFileManager;
 
 import java.io.File;
@@ -23,15 +24,15 @@ public class Test_Register extends Test_base {
     String firstname, lastname, phone, email, password;
 
 
-    //    @BeforeClass
-//    public static void connectToEmail() {
-//        try {
-//            emailUtils = new EmailUtils("alinabiltest@gmail.com", "Ya123456", "smtp.gmail.com", EmailUtils.EmailFolder.INBOX);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            Assert.fail(e.getMessage());
-//        }
-//    }
+        @BeforeClass
+    public static void connectToEmail() {
+        try {
+            emailUtils = new EmailUtils("alinabiltest@gmail.com", "Ya123456", "smtp.gmail.com", EmailUtils.EmailFolder.INBOX);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
+        }
+    }
 
     @BeforeClass
     public void setUp() {
@@ -51,7 +52,7 @@ public class Test_Register extends Test_base {
         homeObj.openSignUpPage();
         singUpObj = new SignUp_page(driver);
         singUpObj.validUserSignUp(email, password, phone, firstname, lastname);
-/*
+
                 try {
             Message email = emailUtils.getMessagesBySubject("Signed Up Successfully", true, 5)[0];
             String link = emailUtils.getUrlsFromMessage(email, "http").get(0);
@@ -61,7 +62,7 @@ public class Test_Register extends Test_base {
             e.printStackTrace();
             Assert.fail(e.getMessage());
         }
- */
+
         driver.get("https://www.phptravels.net/");
         homeObj.openLoginPage();
         loginObj = new Login_page(driver);
